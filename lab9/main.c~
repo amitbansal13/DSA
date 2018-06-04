@@ -1,0 +1,10 @@
+#include "ex3.h"
+#include <time.h>
+int main()
+{
+	srand(time(NULL));
+	Tree t=createTree(rand()%11,0);
+	//printTree(t);
+	dft(t);
+	return 0;
+}

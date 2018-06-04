@@ -1,0 +1,5 @@
+main: ex3.h	ex3.c	ex2.c	ex2.h	main.c	iter.h	iter.c
+	gcc ex3.c ex2.c	main.c	iter.c	-o main
+main1:	ex21.c	ex2.h	main.c	iterDynamic.c	iterDynamic.h
+	gcc	ex21.c	main.c	iterDynamic.c	-o	main1
+

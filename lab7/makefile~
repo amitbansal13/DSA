@@ -1,0 +1,3 @@
+test:	hash.h	hash.c	test.c
+	gcc -c -g hash.c	test.c
+	gcc -pg hash.o test.o -o test

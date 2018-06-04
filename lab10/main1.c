@@ -1,0 +1,22 @@
+#include"ex11.h"
+
+int main()
+{
+	int V = 5;
+    Graph graph = createGraph(V);
+    Vertex a,b,c,d,e;
+    a.index=0;
+    b.index=1;
+    c.index=2;
+    d.index=3;
+    e.index=4;
+    graph=addEdge(graph, a, b);
+    graph=addEdge(graph,a,e);
+    graph=addEdge(graph, b, c);
+    graph=addEdge(graph, b, d);
+    graph=addEdge(graph, b, e);
+    graph=addEdge(graph, c, d);
+    graph=addEdge(graph, d, e);
+    print(graph);
+    return 0;
+}

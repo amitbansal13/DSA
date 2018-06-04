@@ -1,0 +1,73 @@
+#include "ex2.h"
+void printTree(Tree t)
+{
+	if(isEmpty(t))return;
+	while(hasMoreElements(t->it))
+	{
+		Element e=getNextElement(t->it);
+		Tree t1=e->t;
+		printTree(t1);
+		printf("%d\n",t1->value);
+	}
+}
+Tree createNode(int r)
+{
+	Tree t=(Tree)malloc(sizeof(struct tnode));
+	t->value=r;
+	t->it=NULL;
+	return t;
+}
+Iterator new(int r)
+{
+	Iterator it=(Iterator)malloc(sizeof(iter));
+	it->count=0;
+	it->size=r;
+	it->arr=(Element*)malloc(sizeof(Element)*r);
+	return it;
+}
+Element newE()
+{
+	Element e=(Element)malloc(sizeof(struct element));
+	e->t=createNode(rand());
+	return e;
+}
+Iterator makeList(int r)
+{
+	if(r==0)
+		return NULL;
+	Iterator it=new(r);
+	int i=0;
+	for(i=0;i<r;i++)
+		it->arr[i]=newE();
+	return it;
+}
+int isEmpty(Tree t)
+{
+	if(t==NULL || hasMoreElements(t->it)==0)
+		return 1;
+	return 0;
+}
+Element getRootVal(Tree t)
+{
+	return t->value;
+}
+Tree createTree(int n,int h)
+{
+	Tree t=(Tree)malloc(sizeof(struct tnode));
+	t->it=makeList(n);
+	if(n==0 || h==maxh)
+		return t;
+	while(hasMoreElements(t->it))
+	{
+		int r1=rand()%11;
+		Element e=getNextElement(t->it);
+		e->t=createTree(r1,h+1);
+		if(e->t->it)
+			e->t->it->count=0;
+	}
+	return t;
+}
+Iterator getChildren(Tree t)
+{
+	return t->it;
+}
